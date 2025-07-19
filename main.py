@@ -1,6 +1,14 @@
 import streamlit as st
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
+from google import genai
+
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+api_key=os.getenv("GEMINI_API_KEY")
+genai_client = genai.Client(api_key=api_key)
 
 from langchain_core.prompts import (
     SystemMessagePromptTemplate,
@@ -45,7 +53,7 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
-st.title("🧠 DeepSeek Code Companion")
+st.title("🧠 Gemini Code Companion")
 st.caption("🚀 Your AI Pair Programmer with Debugging Superpowers")
 
 # Sidebar configuration
@@ -53,7 +61,7 @@ with st.sidebar:
     st.header("⚙️ Configuration")
     selected_model = st.selectbox(
         "Choose Model",
-        ["deepseek-r1:1.5b", "llama3.2:latest"],
+        ["gemini-2.5-flash", "gemini-2.5-pro"],
         index=0
     )
     st.divider()
@@ -86,7 +94,7 @@ system_prompt = SystemMessagePromptTemplate.from_template(
 
 # Session state management
 if "message_log" not in st.session_state:
-    st.session_state.message_log = [{"role": "ai", "content": "Hi! I'm DeepSeek. How can I help you code today? 💻"}]
+    st.session_state.message_log = [{"role": "ai", "content": "Hi! I'm Gemini. How can I help you code today? 💻"}]
 
 # Chat container
 chat_container = st.container()
@@ -101,8 +109,17 @@ with chat_container:
 user_query = st.chat_input("Type your coding question here...")
 
 def generate_ai_response(prompt_chain):
-    processing_pipeline=prompt_chain | llm_engine | StrOutputParser()
-    return processing_pipeline.invoke({})
+
+    final_prompt = prompt_chain.format()  # Convert prompt_chain to a string prompt.
+    # Send prompt to Gemini API
+    response = genai_client.models.generate_content(
+        model=selected_model,
+        contents=final_prompt
+    )
+    return response.text
+
+    # processing_pipeline=prompt_chain | llm_engine | StrOutputParser()
+    # return processing_pipeline.invoke({})
 
 def build_prompt_chain():
     prompt_sequence = [system_prompt]

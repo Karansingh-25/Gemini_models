@@ -5,3 +5,6 @@ langchain_community
 langchain_ollama
 pdfplumber
 langchain-ollama
+google-genai
+python-dotenv
+
