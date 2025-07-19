@@ -1,12 +1,13 @@
-# 🧠 DeepSeek Code Companion
+# 🧠 Gemini Code Companion
 
-**DeepSeek Code Companion** is your local, intelligent AI pair programmer built using **Ollama**, **LangChain**, and **Streamlit**. It helps you write better code, debug errors, generate documentation, and design solutions — completely offline.
+**Gemini Code Companion** is your local, intelligent AI pair programmer built using **Gemini**, **LangChain**, and **Streamlit**. It helps you write better code, debug errors, generate documentation, and design solutions — completely offline.
 
 ---
 
 ## 📸 Preview
 
-<img width="1909" height="1083" alt="Screenshot 2025-07-19 151044" src="https://github.com/user-attachments/assets/67746d45-abe0-478b-b348-9747e4bb4dde" />
+<img width="1919" height="1018" alt="image" src="https://github.com/user-attachments/assets/5a5f8887-9901-4131-a025-f875663c4ada" />
+
 
 
 ---
@@ -21,7 +22,7 @@
 
 ### ⚙️ Other Features
 - 🎨 Sleek and responsive UI with Streamlit
-- 🤖 Powered by local LLMs via Ollama
+- 🤖 Powered by Gemini
 - 🌐 No internet required — runs fully offline
 - 🧩 Easy to configure and extend
 
@@ -32,7 +33,7 @@
 - **Python 3.11**
 - **Streamlit** – UI framework
 - **LangChain** – Prompt and logic chaining
-- **Ollama** – Local LLM backend (DeepSeek, LLaMA, etc.)
-- **Langchain-Ollama** – Ollama integration for LangChain
+- **Gemini** – Various Models of Gemini
+
 
 ---
