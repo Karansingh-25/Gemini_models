@@ -73,7 +73,7 @@ with st.sidebar:
     - 💡 Solution Design
     """)
     st.divider()
-    st.markdown("Built with [Ollama](https://ollama.ai/) | [LangChain](https://python.langchain.com/)")
+    st.markdown("Built with [Gemini](https://ai.google.dev/gemini-api/docs/models) | [LangChain](https://python.langchain.com/)")
 
 
 # initiate the chat engine
